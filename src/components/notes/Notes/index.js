@@ -2,29 +2,34 @@ import React, { Component } from 'react';
 import Note from 'components/notes/Note';
 import AddNote from 'components/notes/AddNote';
 import EmptyMessage from 'components/notes/EmptyMessage';
+import styles from '../../app/App.module.css';
+
 
 
 export default class Notes extends Component {
   state = {
     notes: [
       {
-        text: 'Note1',
-        time: '2019',
+        title: 'Banana',
+        text: 'Upon the couch sits a broad yellow grin of the deepest gold...',
+        date: '28-04-2016',
       },{
-        text: 'Note2',
-        time: '2018',
-      },{
-        text: 'Note3',
-        time: '2017',
+        title: 'Apple',
+        text: "The apple had a gold star radiating from the stem...",
+        date: '25-12-2001',
       },
     ],
   }
 
   handleOnSubmit = (x) => {
-    this.setState((prevState) => ({
-      notes: [...prevState.notes, x],
-    }));
-    console.log(this.state);
+    if(x.text === '' && x.date === ''){
+      return(null);
+    }else{
+      this.setState((prevState) => ({
+        notes: [...prevState.notes, x],
+      }));
+      console.log(this.state);
+    }
   }
 
   handleOnDelete = (index) => {
@@ -34,19 +39,20 @@ export default class Notes extends Component {
     });
   }
 
-
   render() {
     return (
-      <div>
-        {/* <button onClick={this.props.onClick}>{this.props.text}</button> */}
-        {this.state.display}
-        {this.state.notes.map((obj, index) => {
-          return (
-            <Note id={index} note={obj.text} time={obj.time} onDelete={this.handleOnDelete}/>
-          );
-        })}
-        <EmptyMessage notesLength={this.state.notes.length}></EmptyMessage>
-        <AddNote onSubmit={this.handleOnSubmit}/>
+      <div className={styles.textareaCenter} >
+        <div>
+          {this.state.notes.map((obj, index) => {
+            return (
+                <Note id={index} title={obj.title} note={obj.text} time={obj.date} onDelete={this.handleOnDelete}/>
+            );
+          })}
+            <EmptyMessage notesLength={this.state.notes.length}></EmptyMessage>
+        </div>
+        <div>
+          <AddNote onSubmit={this.handleOnSubmit}/>
+        </div>
       </div>
     );
   }
