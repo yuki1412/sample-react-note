@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import styles from '../../app/App.module.css';
 
 export default class AddNote extends Component {
   state = {
     title: '',
     text: '',
-    date: '',
-    id: '',
   };
 
   handleOnChangeTitle = e => {
@@ -17,17 +14,16 @@ export default class AddNote extends Component {
   handleOnChangeText = e => {
     this.setState({
       text: e.target.value,
-      date: moment().format('D-MM-Y'),
     });
   };
 
   handleOnClickReset = () => {
-    this.setState({ title: '', text: '', date: '', id: '' });
+    this.setState({ title: '', text: '' });
   };
 
   handleOnClickSubmit = () => {
     this.props.onSubmit(this.state);
-    this.setState({ title: '', text: '', date: '', id: '' });
+    this.setState({ title: '', text: '' });
   };
 
   render() {

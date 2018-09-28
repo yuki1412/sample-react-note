@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import styles from '../../app/App.module.css';
 
 export default class Note extends Component {
@@ -7,13 +8,15 @@ export default class Note extends Component {
   };
 
   render() {
+    const dateText = moment(this.props.created_at).format('D-MM-Y');
+
     return (
       <div className={styles.noteList}>
         <div>Title: {this.props.title}</div>
-        <div>Date: {this.props.date}</div>
+        <div>Date: {dateText}</div>
 
         <div>
-          <p>{this.props.note}</p>
+          <p>{this.props.text}</p>
           <button onClick={this.handleOnClickDelete}>Delete</button>
         </div>
       </div>

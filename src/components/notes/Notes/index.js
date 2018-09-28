@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Note from 'components/notes/Note';
 import AddNote from 'components/notes/AddNote';
 import styles from '../../app/App.module.css';
+import moment from 'moment';
 
 function generateRandomId() {
   const randomString = Math.random()
@@ -10,19 +11,24 @@ function generateRandomId() {
   return '_' + randomString;
 }
 
+function generateTimeStamp() {
+  return moment().toISOString();
+}
+
 export default class Notes extends Component {
   state = {
     notes: [],
   };
 
-  handleOnSubmit = x => {
-    if (x.text === '' && x.title === '') {
+  handleOnSubmit = note => {
+    if (note.text === '' && note.title === '') {
       return;
     }
 
     const newNote = {
-      ...x,
+      ...note,
       id: generateRandomId(),
+      created_at: generateTimeStamp(),
     };
 
     this.setState(prevState => ({
@@ -54,10 +60,11 @@ export default class Notes extends Component {
       <div className={styles.textareaCenter}>
         {notes.map(obj => (
           <Note
+            key={obj.id}
             id={obj.id}
             title={obj.title}
-            note={obj.text}
-            date={obj.date}
+            text={obj.text}
+            created_at={obj.created_at}
             onDelete={this.handleOnDelete}
           />
         ))}
