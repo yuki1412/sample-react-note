@@ -1,32 +1,36 @@
 import React, { Component } from 'react';
-import styles from '../../app/App.module.css';
+import moment from 'moment';
 
+import styles from './index.module.css';
 
 export default class Note extends Component {
-  state = this.props.state;
+  handleOnClickDelete = () => {
+    const { onDelete, id } = this.props;
+    onDelete(id);
+  };
+
   render() {
+    const { text, title, createdAt } = this.props;
+    const dateText = moment(createdAt).format('D-MM-Y');
+
     return (
-      <div className={styles.noteList}>
-        <div>
-          Title: {this.props.title}
-        </div>
-        <div>
-          Date: {this.props.date}
-        </div>
-        {this.props.note && (
+      <div className={styles.container}>
+        <div className={styles.headerContainer}>
           <div>
-            <p>
-              {this.props.note}
-            </p>
-            <button
-              onClick={() => {
-                this.props.onDelete(this.props.id);
-              }}
-            >
-            Delete
-          </button>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.date}>Created At: {dateText}</div>
           </div>
-        )}
+          <div style={{ flex: 1 }} />
+          <button className={styles.button} onClick={this.handleOnClickDelete}>
+            &times;
+          </button>
+        </div>
+
+        <hr />
+
+        <div className={styles.textContainer}>
+          <p className={styles.text}>{text}</p>
+        </div>
       </div>
     );
   }

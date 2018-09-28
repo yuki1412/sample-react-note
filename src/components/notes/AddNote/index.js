@@ -1,30 +1,64 @@
 import React, { Component } from 'react';
-import moment from 'moment';
-import styles from '../../app/App.module.css';
 
+import styles from './index.module.css';
+
+const myObj = {
+  text: '',
+  title: '',
+};
 
 export default class AddNote extends Component {
   state = {
-    title:'',
+    title: '',
     text: '',
-    date: '',
-    id:'',
-  }
+  };
+
+  handleOnChangeTitle = e => {
+    this.setState({ title: e.target.value });
+  };
+
+  handleOnChangeText = e => {
+    this.setState({ text: e.target.value });
+  };
+
+  handleOnClickReset = () => {
+    this.setState({ title: '', text: '' });
+  };
+
+  handleOnClickSubmit = () => {
+    const { title, text } = this.state;
+
+    this.props.onSubmit({ title: title, text: text });
+    this.setState({ title: '', text: '' });
+  };
+
   render() {
+    const { title, text } = this.state;
+
     return (
-      <div className={styles.textareaContainer}>
-          <div>Title: &nbsp;
-            <textarea value={this.state.title} onChange={(e) => {
-              this.setState({title: e.target.value});
-            }}/>
-          </div>
-          <div>Text: &nbsp;
-            <textarea  onChange={(e) => {
-              this.setState({ text: e.target.value, date:moment().format('D-MM-Y')});
-            }}/>
-          </div>
-          <button onClick={() => {this.setState({title: '', text:'', date:'', id:''})}}>Reset</button>
-          <button onClick={() => {this.props.onSubmit(this.state)}}>Submit</button>
+      <div className={styles.container}>
+        <div className={styles.inputContainer}>
+          <p className={styles.label}>Title</p>
+          <input
+            className={styles.textInput}
+            value={title}
+            onChange={this.handleOnChangeTitle}
+          />
+        </div>
+
+        <div className={styles.inputContainer}>
+          <p className={styles.label}>Text</p>
+          <textarea
+            className={styles.textAreaInput}
+            value={text}
+            onChange={this.handleOnChangeText}
+          />
+        </div>
+
+        <div className={styles.buttonContainer}>
+          <button onClick={this.handleOnClickReset}>Reset</button>
+          <button onClick={this.handleOnClickSubmit}>Submit</button>
+        </div>
       </div>
     );
   }

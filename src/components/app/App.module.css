@@ -26,28 +26,3 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-/* ================================================  */
-/* Playing with css */
-
-.textareaContainer {
-  background-color: DodgerBlue;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  margin-left: 25%;
-  margin-right: 25%;
-}
-
-.textareaCenter {
-  flex-direction: flex-start;
-  justify-content: space-between;
-}
-
-.noteList {
-  border-style: solid;
-  margin-top: 30px;
-  margin-left: 25%;
-  margin-right: 25%;
-}

@@ -4,7 +4,7 @@ export default class Child extends Component {
   static defaultProps = {
     name: 'Stranger',
     message: '....',
-  }
+  };
 
   render() {
     return (
@@ -12,7 +12,6 @@ export default class Child extends Component {
         <p>Child: Hello {this.props.name}</p>
         <p>{this.props.message}</p>
       </div>
-
     );
   }
 }
