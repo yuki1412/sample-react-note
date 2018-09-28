@@ -3,13 +3,12 @@ import moment from 'moment';
 import styles from '../../app/App.module.css';
 
 
-
-
 export default class AddNote extends Component {
   state = {
     title:'',
     text: '',
     date: '',
+    id:'',
   }
   render() {
     return (
@@ -20,13 +19,12 @@ export default class AddNote extends Component {
             }}/>
           </div>
           <div>Text: &nbsp;
-            <textarea value={this.state.text} onChange={(e) => {
+            <textarea  onChange={(e) => {
               this.setState({ text: e.target.value, date:moment().format('D-MM-Y')});
             }}/>
           </div>
-          <button onClick={() => {this.setState({title: '', text:'', date:''})}}>Reset</button>
+          <button onClick={() => {this.setState({title: '', text:'', date:'', id:''})}}>Reset</button>
           <button onClick={() => {this.props.onSubmit(this.state)}}>Submit</button>
-
       </div>
     );
   }
