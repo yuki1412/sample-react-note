@@ -3,36 +3,29 @@ import styles from '../../app/App.module.css';
 
 
 export default class Note extends Component {
-  state = {
-      title: this.props.title,
-      note: this.props.note,
-      date: this.props.time,
-    }
+  state = this.props.state;
   render() {
     return (
       <div className={styles.noteList}>
         <div>
-          Title: {this.state.title}
+          Title: {this.props.title}
         </div>
         <div>
-          Date: {this.state.date}
+          Date: {this.props.date}
         </div>
-        {this.state.note && (
-          // <form>
+        {this.props.note && (
           <div>
             <p>
-              {this.state.note}
+              {this.props.note}
             </p>
             <button
-              onClick={(e) => {
-                // e.preventDefault();
+              onClick={() => {
                 this.props.onDelete(this.props.id);
               }}
             >
             Delete
           </button>
           </div>
-          // </form>
         )}
       </div>
     );
