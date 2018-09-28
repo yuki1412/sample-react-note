@@ -12,9 +12,7 @@ export default class AddNote extends Component {
   };
 
   handleOnChangeText = e => {
-    this.setState({
-      text: e.target.value,
-    });
+    this.setState({ text: e.target.value });
   };
 
   handleOnClickReset = () => {
@@ -22,26 +20,24 @@ export default class AddNote extends Component {
   };
 
   handleOnClickSubmit = () => {
-    this.props.onSubmit(this.state);
+    const { title, text } = this.state;
+
+    this.props.onSubmit({ title: title, text: text });
     this.setState({ title: '', text: '' });
   };
 
   render() {
+    const { title, text } = this.state;
+
     return (
       <div className={styles.textareaContainer}>
         <div>
           Title: &nbsp;
-          <textarea
-            value={this.state.title}
-            onChange={this.handleOnChangeTitle}
-          />
+          <textarea value={title} onChange={this.handleOnChangeTitle} />
         </div>
         <div>
           Text: &nbsp;
-          <textarea
-            value={this.state.text}
-            onChange={this.handleOnChangeText}
-          />
+          <textarea value={text} onChange={this.handleOnChangeText} />
         </div>
         <button onClick={this.handleOnClickReset}>Reset</button>
         <button onClick={this.handleOnClickSubmit}>Submit</button>

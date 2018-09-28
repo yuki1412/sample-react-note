@@ -28,7 +28,7 @@ export default class Notes extends Component {
     const newNote = {
       ...note,
       id: generateRandomId(),
-      created_at: generateTimeStamp(),
+      createdAt: generateTimeStamp(),
     };
 
     this.setState(prevState => ({
@@ -37,23 +37,13 @@ export default class Notes extends Component {
   };
 
   handleOnDelete = selectedID => {
-    // this.setState(prevState => {
-    //   const filteredNotes = prevState.notes.filter(
-    //     item => item.id !== selectedID,
-    //   );
-    //
-    //   return {
-    //     notes: filteredNotes,
-    //   };
-    // });
-
     this.setState(prevState => ({
       notes: prevState.notes.filter(item => item.id !== selectedID),
     }));
   };
 
   render() {
-    const notes = this.state.notes;
+    const { notes } = this.state;
     console.log(notes);
 
     return (
@@ -64,7 +54,7 @@ export default class Notes extends Component {
             id={obj.id}
             title={obj.title}
             text={obj.text}
-            created_at={obj.created_at}
+            createdAt={obj.createdAt}
             onDelete={this.handleOnDelete}
           />
         ))}

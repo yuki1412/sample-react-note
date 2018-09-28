@@ -4,19 +4,21 @@ import styles from '../../app/App.module.css';
 
 export default class Note extends Component {
   handleOnClickDelete = () => {
-    this.props.onDelete(this.props.id);
+    const { onDelete, id } = this.props;
+    onDelete(id);
   };
 
   render() {
-    const dateText = moment(this.props.created_at).format('D-MM-Y');
+    const { text, title, createdAt } = this.props;
+    const dateText = moment(createdAt).format('D-MM-Y');
 
     return (
       <div className={styles.noteList}>
-        <div>Title: {this.props.title}</div>
+        <div>Title: {title}</div>
         <div>Date: {dateText}</div>
 
         <div>
-          <p>{this.props.text}</p>
+          <p>{text}</p>
           <button onClick={this.handleOnClickDelete}>Delete</button>
         </div>
       </div>
