@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import styles from '../../app/App.module.css';
+
+import styles from './index.module.css';
+
+const myObj = {
+  text: '',
+  title: '',
+};
 
 export default class AddNote extends Component {
   state = {
@@ -30,17 +36,29 @@ export default class AddNote extends Component {
     const { title, text } = this.state;
 
     return (
-      <div className={styles.textareaContainer}>
-        <div>
-          Title: &nbsp;
-          <textarea value={title} onChange={this.handleOnChangeTitle} />
+      <div className={styles.container}>
+        <div className={styles.inputContainer}>
+          <p className={styles.label}>Title</p>
+          <input
+            className={styles.textInput}
+            value={title}
+            onChange={this.handleOnChangeTitle}
+          />
         </div>
-        <div>
-          Text: &nbsp;
-          <textarea value={text} onChange={this.handleOnChangeText} />
+
+        <div className={styles.inputContainer}>
+          <p className={styles.label}>Text</p>
+          <textarea
+            className={styles.textAreaInput}
+            value={text}
+            onChange={this.handleOnChangeText}
+          />
         </div>
-        <button onClick={this.handleOnClickReset}>Reset</button>
-        <button onClick={this.handleOnClickSubmit}>Submit</button>
+
+        <div className={styles.buttonContainer}>
+          <button onClick={this.handleOnClickReset}>Reset</button>
+          <button onClick={this.handleOnClickSubmit}>Submit</button>
+        </div>
       </div>
     );
   }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Note from 'components/notes/Note';
 import AddNote from 'components/notes/AddNote';
-import styles from '../../app/App.module.css';
 import moment from 'moment';
+
+import styles from './index.module.css';
 
 function generateRandomId() {
   const randomString = Math.random()
@@ -44,10 +45,9 @@ export default class Notes extends Component {
 
   render() {
     const { notes } = this.state;
-    console.log(notes);
 
     return (
-      <div className={styles.textareaCenter}>
+      <div className={styles.container}>
         {notes.map(obj => (
           <Note
             key={obj.id}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import styles from '../../app/App.module.css';
+
+import styles from './index.module.css';
 
 export default class Note extends Component {
   handleOnClickDelete = () => {
@@ -13,13 +14,22 @@ export default class Note extends Component {
     const dateText = moment(createdAt).format('D-MM-Y');
 
     return (
-      <div className={styles.noteList}>
-        <div>Title: {title}</div>
-        <div>Date: {dateText}</div>
+      <div className={styles.container}>
+        <div className={styles.headerContainer}>
+          <div>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.date}>Created At: {dateText}</div>
+          </div>
+          <div style={{ flex: 1 }} />
+          <button className={styles.button} onClick={this.handleOnClickDelete}>
+            &times;
+          </button>
+        </div>
 
-        <div>
-          <p>{text}</p>
-          <button onClick={this.handleOnClickDelete}>Delete</button>
+        <hr />
+
+        <div className={styles.textContainer}>
+          <p className={styles.text}>{text}</p>
         </div>
       </div>
     );
