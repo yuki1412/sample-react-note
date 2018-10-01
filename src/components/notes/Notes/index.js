@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Note from 'components/notes/Note';
 import AddNote from 'components/notes/AddNote';
 import moment from 'moment';
+import { observer } from 'mobx-react';
 
+import notesStore from './NotesStore';
 import styles from './index.module.css';
 
 function generateRandomId() {
@@ -16,6 +18,7 @@ function generateTimeStamp() {
   return moment().toISOString();
 }
 
+@observer
 export default class Notes extends Component {
   state = {
     notes: [],
@@ -32,19 +35,24 @@ export default class Notes extends Component {
       createdAt: generateTimeStamp(),
     };
 
-    this.setState(prevState => ({
-      notes: [...prevState.notes, newNote],
-    }));
+    // this.setState(prevState => ({
+    //   notes: [...prevState.notes, newNote],
+    // }));
+    notesStore.addNote(newNote)
   };
 
   handleOnDelete = selectedID => {
-    this.setState(prevState => ({
-      notes: prevState.notes.filter(item => item.id !== selectedID),
-    }));
+    // this.setState(prevState => ({
+    //   notes: prevState.notes.filter(item => item.id !== selectedID),
+    // }));
+
+    notesStore.deleteNote(selectedID)
   };
 
   render() {
-    const { notes } = this.state;
+    // const { notes } = this.state;
+    const notes = notesStore.notes;
+    const count = notesStore.notesCount;
 
     return (
       <div className={styles.container}>
@@ -59,7 +67,8 @@ export default class Notes extends Component {
           />
         ))}
 
-        {!notes.length && <p>No Message Yet!</p>}
+        {/* {!notes.length && <p>No Message Yet!</p>} */}
+        {!count && <p>No Message Yet!</p>}
 
         <AddNote onSubmit={this.handleOnSubmit} />
       </div>
