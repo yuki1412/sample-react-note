@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
-import notesStore from 'services/notes/NotesStore'
+import notesStore from 'services/notes/NotesStore';
 
 import styles from './index.module.css';
 
@@ -9,7 +9,7 @@ export default class Note extends Component {
   handleOnClickDelete = () => {
     const { id } = this.props;
     // onDelete(id);
-    notesStore.deleteNote(id)
+    notesStore.deleteNote(id);
   };
 
   render() {

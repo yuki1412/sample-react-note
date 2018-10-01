@@ -1,7 +1,6 @@
 import { observable, computed } from 'mobx';
 import moment from 'moment';
 
-
 function generateRandomId() {
   const randomString = Math.random()
     .toString(36)
@@ -15,7 +14,7 @@ function generateTimeStamp() {
 
 class NotesStore {
   @observable
-  notes = []
+  notes = [];
 
   @computed
   get notesCount() {
@@ -23,7 +22,7 @@ class NotesStore {
     return this.notes.length;
   }
 
-  addNote(title,text) {
+  addNote(title, text) {
     if (text === '' && title === '') {
       return;
     }
@@ -40,8 +39,5 @@ class NotesStore {
     this.notes = this.notes.filter(item => item.id !== id);
   }
 }
-
-
-
 
 export default new NotesStore();

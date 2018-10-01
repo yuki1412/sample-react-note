@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import NotesStore from 'services/notes/NotesStore'
+import NotesStore from 'services/notes/NotesStore';
 
 import styles from './index.module.css';
 
@@ -26,7 +26,7 @@ export default class AddNote extends Component {
     const { title, text } = this.state;
 
     // this.props.onSubmit({ title: title, text: text });
-    NotesStore.addNote( title, text );
+    NotesStore.addNote(title, text);
     this.setState({ title: '', text: '' });
   };
 

@@ -7,8 +7,6 @@ import notesStore from 'services/notes/NotesStore';
 
 import styles from './index.module.css';
 
-
-
 @observer
 export default class Notes extends Component {
   state = {
@@ -16,20 +14,20 @@ export default class Notes extends Component {
   };
 
   // handleOnSubmit = note => {
-    // if (note.text === '' && note.title === '') {
-    //   return;
-    // }
-    //
-    // const newNote = {
-    //   ...note,
-    //   id: generateRandomId(),
-    //   createdAt: generateTimeStamp(),
-    // };
+  // if (note.text === '' && note.title === '') {
+  //   return;
+  // }
+  //
+  // const newNote = {
+  //   ...note,
+  //   id: generateRandomId(),
+  //   createdAt: generateTimeStamp(),
+  // };
 
-    // this.setState(prevState => ({
-    //   notes: [...prevState.notes, newNote],
-    // }));
-    // notesStore.addNote(newNote)
+  // this.setState(prevState => ({
+  //   notes: [...prevState.notes, newNote],
+  // }));
+  // notesStore.addNote(newNote)
   // };
 
   // handleOnDelete = selectedID => {
