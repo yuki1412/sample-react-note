@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
-import Note from 'components/notes/Note';
-import AddNote from 'components/notes/AddNote';
-import moment from 'moment';
 import { observer } from 'mobx-react';
 
-import notesStore from './NotesStore';
+import Note from 'components/notes/Note';
+import AddNote from 'components/notes/AddNote';
+import notesStore from 'services/notes/NotesStore';
+
 import styles from './index.module.css';
 
-function generateRandomId() {
-  const randomString = Math.random()
-    .toString(36)
-    .substr(2, 9);
-  return '_' + randomString;
-}
 
-function generateTimeStamp() {
-  return moment().toISOString();
-}
 
 @observer
 export default class Notes extends Component {
@@ -24,30 +15,30 @@ export default class Notes extends Component {
     notes: [],
   };
 
-  handleOnSubmit = note => {
-    if (note.text === '' && note.title === '') {
-      return;
-    }
-
-    const newNote = {
-      ...note,
-      id: generateRandomId(),
-      createdAt: generateTimeStamp(),
-    };
+  // handleOnSubmit = note => {
+    // if (note.text === '' && note.title === '') {
+    //   return;
+    // }
+    //
+    // const newNote = {
+    //   ...note,
+    //   id: generateRandomId(),
+    //   createdAt: generateTimeStamp(),
+    // };
 
     // this.setState(prevState => ({
     //   notes: [...prevState.notes, newNote],
     // }));
-    notesStore.addNote(newNote)
-  };
+    // notesStore.addNote(newNote)
+  // };
 
-  handleOnDelete = selectedID => {
-    // this.setState(prevState => ({
-    //   notes: prevState.notes.filter(item => item.id !== selectedID),
-    // }));
-
-    notesStore.deleteNote(selectedID)
-  };
+  // handleOnDelete = selectedID => {
+  //   // this.setState(prevState => ({
+  //   //   notes: prevState.notes.filter(item => item.id !== selectedID),
+  //   // }));
+  //
+  //   notesStore.deleteNote(selectedID)
+  // };
 
   render() {
     // const { notes } = this.state;
@@ -70,7 +61,7 @@ export default class Notes extends Component {
         {/* {!notes.length && <p>No Message Yet!</p>} */}
         {!count && <p>No Message Yet!</p>}
 
-        <AddNote onSubmit={this.handleOnSubmit} />
+        <AddNote />
       </div>
     );
   }
