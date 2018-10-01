@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 import styles from './index.module.css';
 
-const myObj = {
-  text: '',
-  title: '',
-};
 
 export default class AddNote extends Component {
   state = {
