@@ -10,9 +10,6 @@ class Screen extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <header>
-          <img src={logo} className={styles.logo} alt="logo" />
-        </header>
         <Notes />
       </div>
     );

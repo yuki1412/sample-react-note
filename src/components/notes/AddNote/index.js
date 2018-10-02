@@ -24,6 +24,7 @@ export default class AddNote extends Component {
 
   handleOnClickSubmit = () => {
     const { title, text } = this.state;
+    console.log(this.state);
 
     // this.props.onSubmit({ title: title, text: text });
     NotesStore.addNote(title, text);
