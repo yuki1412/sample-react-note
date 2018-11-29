@@ -84,11 +84,11 @@ export default class Note extends Component {
 
 
           </div>
-          {this.state.editing && <textarea
+          {this.state.editing && <div className={styles.textAreaContainer}><textarea
             className={styles.textAreaInput}
             value={this.state.text}
             onChange={this.handleOnChangeText}
-          />}
+          /></div>}
         </Collapsible>
       </div>
     );

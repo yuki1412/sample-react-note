@@ -45,6 +45,19 @@
   font-family: Roboto;
 }
 
+.textAreaInput {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.textAreaContainer {
+  margin: 10px;
+  border-color: black;
+  border-style: thin;
+}
+
 .button {
   display: flex;
   justify-content: center;
