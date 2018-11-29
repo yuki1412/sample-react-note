@@ -23,22 +23,28 @@
 }
 
 .label {
-  width: 60px;
   display: inline;
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 12px;
   text-align: right;
   padding-right: 5px;
+  font-family: Roboto;
+  min-width: 60px;
 }
 
 .textInput {
   flex: 1;
+  border-color: black;
+  border-width: thin;
+  width: 100%;
 }
 
 .textAreaInput {
   flex: 1;
   height: 100px;
+  border-color: black;
+  border-width: thin;
 }
 
 .buttonContainer {
