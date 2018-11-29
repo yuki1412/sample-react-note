@@ -56,17 +56,19 @@ export default class Notes extends Component {
         {/* <ul >
             {notesStore.posts.results.map((o) => <li>{notesStore.ucFirst(o.name)}</li>)}
         </ul> */}
+        <div className={styles.noteContainer}>
+          {notes.map(obj => (
+            <Note
+              key={obj.id}
+              id={obj.id}
+              title={obj.title}
+              text={obj.text}
+              createdAt={obj.createdAt}
+              // onDelete={this.handleOnDelete}
+            />
+          ))}
+        </div>
 
-        {notes.map(obj => (
-          <Note
-            key={obj.id}
-            id={obj.id}
-            title={obj.title}
-            text={obj.text}
-            createdAt={obj.createdAt}
-            // onDelete={this.handleOnDelete}
-          />
-        ))}
 
         {/* {!notes.length && <p>No Message Yet!</p>} */}
         {!count && <p>No Message Yet!</p>}
