@@ -49,6 +49,7 @@ export default class Note extends Component {
           <hr />
           <div className={styles.textContainer}>
             <p className={styles.text}>{text}</p>
+            <button>Edit</button>
           </div>
         </Collapsible>
       </div>
