@@ -55,6 +55,7 @@
 }
 
 .textAreaContainer {
+  display: flex;
   margin: 10px;
   border-color: black;
   border-style: thin;
