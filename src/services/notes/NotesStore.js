@@ -19,10 +19,12 @@ class NotesStore {
     {
     title: 'For testing purpose',
     text: 'some text ...blablabla',
+    index: 0,
   },
     {
     title: 'Second note',
     text: 'some text ...blablabla',
+    index: 1,
   },
 ];
 
@@ -63,6 +65,7 @@ class NotesStore {
       text: text,
       id: generateRandomId(),
       createdAt: generateTimeStamp(),
+      index: this.notesCount,
     };
     this.notes.push(newNote);
   }
@@ -70,6 +73,13 @@ class NotesStore {
   deleteNote(id) {
     this.notes = this.notes.filter(item => item.id !== id);
   }
+
+  // editNote(text) {
+  //   this.notes.filter(item => item.text === text);
+  //   console.log(this.notes);
+  //   // let temp = this.notes.filter(item => item.id === id);
+  //   // console.log(temp[0].Target);
+  // }
 
 
 }

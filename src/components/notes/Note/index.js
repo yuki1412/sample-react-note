@@ -6,13 +6,38 @@ import Collapsible from 'react-collapsible';
 
 import styles from './index.module.css';
 
+
 export default class Note extends Component {
+  state = {
+    text: this.props.text,
+    editing: false,
+  }
   handleOnClickDelete = () => {
     const { id } = this.props;
     // onDelete(id);
     notesStore.deleteNote(id);
   };
 
+  handleOnClickCancel = () => {
+    this.setState(prevState => ({ editing: false }))
+  };
+
+  handleOnClickConfirm = () => {
+    const { text } = this.state;
+    const { index } = this.props;
+    notesStore.notes[index].text = text;
+    this.setState(prevState => ({ editing: false }))
+  };
+
+  handleOnClickEdit = () => {
+    const { id, text, index } = this.props;
+    const { notes } = notesStore;
+    this.setState((prevState) => ({ editing: true }));
+  };
+
+  handleOnChangeText = e => {
+    this.setState({ text: e.target.value });
+  };
   render() {
     const { text, title, createdAt } = this.props;
     const dateText = moment(createdAt).format('D-MM-Y');
@@ -49,8 +74,21 @@ export default class Note extends Component {
           <hr />
           <div className={styles.textContainer}>
             <p className={styles.text}>{text}</p>
-            <button>Edit</button>
+            {this.state.editing ?
+            <div>
+              <button onClick={this.handleOnClickCancel}>Cancel</button>
+              <button onClick={this.handleOnClickConfirm}>Confirm</button>
+            </div> :
+            <button onClick={this.handleOnClickEdit}>Edit</button>
+          }
+
+
           </div>
+          {this.state.editing && <textarea
+            className={styles.textAreaInput}
+            value={this.state.text}
+            onChange={this.handleOnChangeText}
+          />}
         </Collapsible>
       </div>
     );

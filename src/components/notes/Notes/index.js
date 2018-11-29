@@ -64,6 +64,7 @@ export default class Notes extends Component {
               title={obj.title}
               text={obj.text}
               createdAt={obj.createdAt}
+              index={obj.index}
               // onDelete={this.handleOnDelete}
             />
           ))}
