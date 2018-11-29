@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../../images/logo.svg';
 import styles from './App.module.css';
 
 // import Parent from 'components/stateDemo/Parent';

@@ -5,16 +5,12 @@ import Note from 'components/notes/Note';
 import AddNote from 'components/notes/AddNote';
 import notesStore from 'services/notes/NotesStore';
 
+
 import styles from './index.module.css';
 
 @observer
 export default class Notes extends Component {
-  state = {
-    notes: [{
-      title: 'First Note',
-      text: 'Some rubbish data...bla',
-    },
-  ]};
+  // state = {};
 
   // handleOnSubmit = note => {
   // if (note.text === '' && note.title === '') {
@@ -43,11 +39,11 @@ export default class Notes extends Component {
 
 
 
+
   render() {
     // const { notes } = this.state;
     const notes = notesStore.notes;
     const count = notesStore.notesCount;
-
     if (notesStore.isLoading)
       return (
         <div className={styles.loaderWrapper}>
@@ -57,9 +53,9 @@ export default class Notes extends Component {
       );
     return (
       <div className={styles.container}>
-        <ul >
-            {notesStore.posts.map((o) => <li key={o.id}> {o.id+  '  ' + o.address.city} </li>)}
-        </ul>
+        {/* <ul >
+            {notesStore.posts.results.map((o) => <li>{notesStore.ucFirst(o.name)}</li>)}
+        </ul> */}
 
         {notes.map(obj => (
           <Note
@@ -68,7 +64,7 @@ export default class Notes extends Component {
             title={obj.title}
             text={obj.text}
             createdAt={obj.createdAt}
-            onDelete={this.handleOnDelete}
+            // onDelete={this.handleOnDelete}
           />
         ))}
 

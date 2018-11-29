@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 import notesStore from 'services/notes/NotesStore';
+import Collapsible from 'react-collapsible';
 
 import styles from './index.module.css';
 
@@ -18,7 +19,8 @@ export default class Note extends Component {
 
     return (
       <div className={styles.container}>
-        <div className={styles.headerContainer}>
+
+        {/* <div className={styles.headerContainer}>
           <div>
             <div className={styles.title}>{title}</div>
             <div className={styles.date}>Created At: {dateText}</div>
@@ -27,13 +29,28 @@ export default class Note extends Component {
           <button className={styles.button} onClick={this.handleOnClickDelete}>
             &times;
           </button>
-        </div>
+        </div> */}
 
-        <hr />
+        {/* <hr /> */}
+        <Collapsible trigger={
+          <div className={styles.headerContainer}>
+            <div>
+              <div className={styles.title}>{title}</div>
+              <div className={styles.date}>Created At: {dateText}</div>
+            </div>
 
-        <div className={styles.textContainer}>
-          <p className={styles.text}>{text}</p>
-        </div>
+            <button
+              className={styles.button}
+              onClick={this.handleOnClickDelete}>
+              &times;
+            </button>
+          </div>}>
+
+          <hr />
+          <div className={styles.textContainer}>
+            <p className={styles.text}>{text}</p>
+          </div>
+        </Collapsible>
       </div>
     );
   }

@@ -15,7 +15,16 @@ function generateTimeStamp() {
 
 class NotesStore {
   @observable
-  notes = [];
+  notes = [
+    {
+    title: 'For testing purpose',
+    text: 'some text ...blablabla',
+  },
+    {
+    title: 'Second note',
+    text: 'some text ...blablabla',
+  },
+];
 
   @observable
   posts = [];
@@ -34,13 +43,16 @@ class NotesStore {
 
   fetchPosts () {
     this.isLoading = true;
-    axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
+    axios.get('https://pokeapi.co/api/v2/pokemon/').then((res) => {
       console.log(res.data);
-      console.log(this);
+      console.log(res.data.name);
       this.posts = res.data;
-      this.isLoading = false
+      this.isLoading = false;
     });
   }
+  ucFirst(string){
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
 
   addNote(title, text) {
     if (text === '' && title === '') {

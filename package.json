@@ -9,6 +9,7 @@
     "mobx-react": "^5.2.8",
     "moment": "^2.22.2",
     "react": "^16.5.2",
+    "react-collapsible": "^2.3.1",
     "react-dom": "^16.5.2"
   },
   "scripts": {
