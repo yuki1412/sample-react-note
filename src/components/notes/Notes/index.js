@@ -11,6 +11,14 @@ import styles from './index.module.css';
 
 @observer
 export default class Notes extends Component {
+  state = {
+    toggleButton: true,
+  };
+
+  toggleButton = () => {
+    this.setState(prevState => ({ toggleButton: !prevState.toggleButton }));
+  };
+
   handleOnSearch = e => {
     notesStore.searchingValue = e.target.value;
     notesStore.searchNote();
@@ -47,9 +55,10 @@ export default class Notes extends Component {
           ))}
         </div>
         <div className={styles.footer}>
+          <div className={this.state.toggleButton ? styles.toggleContainerOn : styles.toggleContainerOff} onClick={this.toggleButton}>
+            <div id="toggle" className={this.state.toggleButton ? styles.toggleCircleOn : styles.toggleCircleOff} />
+          </div>
           <NoteSearch onSearch={this.handleOnSearch}/>
-
-          {/* {!notes.length && <p>No Message Yet!</p>} */}
           {!count && <p>No Message Yet!</p>}
           <AddNote />
         </div>
