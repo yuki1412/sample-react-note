@@ -6,7 +6,6 @@ import Collapsible from 'react-collapsible';
 
 import styles from './index.module.css';
 
-
 export default class Note extends Component {
   state = {
     text: this.props.text,
@@ -18,10 +17,6 @@ export default class Note extends Component {
     notesStore.deleteNote(id);
   };
 
-  handleOnClickCancel = () => {
-    this.setState(prevState => ({ editing: false }))
-  };
-
   handleOnClickConfirm = () => {
     const { text } = this.state;
     const { index } = this.props;
@@ -30,9 +25,7 @@ export default class Note extends Component {
   };
 
   handleOnClickEdit = () => {
-    const { id, text, index } = this.props;
-    const { notes } = notesStore;
-    this.setState((prevState) => ({ editing: true }));
+    this.setState((prevState) => ({ editing: !prevState.editing }));
   };
 
   handleOnChangeText = e => {
@@ -40,6 +33,7 @@ export default class Note extends Component {
   };
   render() {
     const { text, title, createdAt } = this.props;
+    const { editing } = this.state;
     const dateText = moment(createdAt).format('D-MM-Y');
 
     return (
@@ -63,7 +57,6 @@ export default class Note extends Component {
               <div className={styles.title}>{title}</div>
               <div className={styles.date}>Created At: {dateText}</div>
             </div>
-
             <button
               className={styles.button}
               onClick={this.handleOnClickDelete}>
@@ -74,9 +67,9 @@ export default class Note extends Component {
           <hr />
           <div className={styles.textContainer}>
             <p className={styles.text}>{text}</p>
-            {this.state.editing ?
+            {editing ?
             <div>
-              <button onClick={this.handleOnClickCancel}>Cancel</button>
+              <button onClick={this.handleOnClickEdit}>Cancel</button>
               <button onClick={this.handleOnClickConfirm}>Confirm</button>
             </div> :
             <button onClick={this.handleOnClickEdit}>Edit</button>
@@ -84,7 +77,7 @@ export default class Note extends Component {
 
 
           </div>
-          {this.state.editing && <div className={styles.textAreaContainer}><textarea
+          {editing && <div className={styles.textAreaContainer}><textarea
             className={styles.textAreaInput}
             value={this.state.text}
             onChange={this.handleOnChangeText}
