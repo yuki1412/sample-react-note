@@ -7,10 +7,11 @@
   background-color: #f7f7f7;
 }
 
-.noteContainer {
-
-}
-
 .note {
   background-color: white;
+}
+
+.footer {
+  margin-left: 25%;
+  margin-right: 25%;
 }

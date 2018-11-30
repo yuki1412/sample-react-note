@@ -11,39 +11,10 @@ import styles from './index.module.css';
 
 @observer
 export default class Notes extends Component {
-  // state = {};
-
-  // handleOnSubmit = note => {
-  // if (note.text === '' && note.title === '') {
-  //   return;
-  // }
-  //
-  // const newNote = {
-  //   ...note,
-  //   id: generateRandomId(),
-  //   createdAt: generateTimeStamp(),
-  // };
-
-  // this.setState(prevState => ({
-  //   notes: [...prevState.notes, newNote],
-  // }));
-  // notesStore.addNote(newNote)
-  // };
-
-  // handleOnDelete = selectedID => {
-  //   // this.setState(prevState => ({
-  //   //   notes: prevState.notes.filter(item => item.id !== selectedID),
-  //   // }));
-  //
-  //   notesStore.deleteNote(selectedID)
-  // };
-
   handleOnSearch = e => {
     notesStore.searchingValue = e.target.value;
     notesStore.searchNote();
   };
-
-
   render() {
     // const { notes } = this.state;
     const { notes, filteredNotes } = notesStore;
@@ -73,11 +44,13 @@ export default class Notes extends Component {
             />
           ))}
         </div>
-        <NoteSearch onSearch={this.handleOnSearch}/>
+        <div className={styles.footer}>
+          <NoteSearch onSearch={this.handleOnSearch}/>
 
-        {/* {!notes.length && <p>No Message Yet!</p>} */}
-        {!count && <p>No Message Yet!</p>}
-        <AddNote />
+          {/* {!notes.length && <p>No Message Yet!</p>} */}
+          {!count && <p>No Message Yet!</p>}
+          <AddNote />
+        </div>
       </div>
     );
   }
