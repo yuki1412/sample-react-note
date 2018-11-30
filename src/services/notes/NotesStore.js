@@ -79,6 +79,7 @@ class NotesStore {
 
   deleteNote(id) {
     this.notes = this.notes.filter(item => item.id !== id);
+    this.searchNote();
   }
 
   searchNote() {
