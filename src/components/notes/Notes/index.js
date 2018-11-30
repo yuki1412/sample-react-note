@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 
 import Note from 'components/notes/Note';
 import AddNote from 'components/notes/AddNote';
+import NoteSearch from 'components/notes/NoteSearch';
 import notesStore from 'services/notes/NotesStore';
 
 
@@ -37,12 +38,15 @@ export default class Notes extends Component {
   //   notesStore.deleteNote(selectedID)
   // };
 
-
+  handleOnSearch = e => {
+    notesStore.searchingValue = e.target.value;
+    notesStore.searchNote();
+  };
 
 
   render() {
     // const { notes } = this.state;
-    const notes = notesStore.notes;
+    const { notes, filteredNotes } = notesStore;
     const count = notesStore.notesCount;
     if (notesStore.isLoading)
       return (
@@ -57,7 +61,7 @@ export default class Notes extends Component {
             {notesStore.posts.results.map((o) => <li>{notesStore.ucFirst(o.name)}</li>)}
         </ul> */}
         <div className={styles.noteContainer}>
-          {notes.map(obj => (
+          {filteredNotes.map(obj => (
             <Note
               key={obj.id}
               id={obj.id}
@@ -69,7 +73,7 @@ export default class Notes extends Component {
             />
           ))}
         </div>
-
+        <NoteSearch onSearch={this.handleOnSearch}/>
 
         {/* {!notes.length && <p>No Message Yet!</p>} */}
         {!count && <p>No Message Yet!</p>}

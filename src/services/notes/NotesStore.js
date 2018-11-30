@@ -34,6 +34,12 @@ class NotesStore {
   @observable
   isLoading = true;
 
+  @observable
+  filteredNotes = [];
+
+  @observable
+  searchingValue = '';
+
   @computed
   get notesCount() {
     console.log(this.notes);
@@ -41,6 +47,7 @@ class NotesStore {
   }
   constructor(){
     this.fetchPosts();
+    this.searchNote();
   }
 
   fetchPosts () {
@@ -74,6 +81,12 @@ class NotesStore {
     this.notes = this.notes.filter(item => item.id !== id);
   }
 
+  searchNote() {
+    if (this.searchingValue !== '')
+      this.filteredNotes = this.notes.filter(item => item.title.toUpperCase().includes(this.searchingValue.toUpperCase()));
+    else
+      this.filteredNotes = this.notes;
+  }
   // editNote(text) {
   //   this.notes.filter(item => item.text === text);
   //   console.log(this.notes);
