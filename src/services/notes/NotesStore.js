@@ -82,19 +82,16 @@ class NotesStore {
   }
 
   searchNote() {
-    if (this.searchingValue !== '')
-      this.filteredNotes = this.notes.filter(item => item.title.toUpperCase().includes(this.searchingValue.toUpperCase()));
+    if (this.searchingValue !== '') {
+      this.filteredNotes = this.notes.filter(item =>
+        //Search title
+        item.title.toUpperCase().includes(this.searchingValue.toUpperCase()) ||
+        //Search text
+        item.text.toUpperCase().includes(this.searchingValue.toUpperCase()));
+      }
     else
       this.filteredNotes = this.notes;
   }
-  // editNote(text) {
-  //   this.notes.filter(item => item.text === text);
-  //   console.log(this.notes);
-  //   // let temp = this.notes.filter(item => item.id === id);
-  //   // console.log(temp[0].Target);
-  // }
-
-
 }
 
 export default new NotesStore();

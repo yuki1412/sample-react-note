@@ -31,6 +31,7 @@ export default class Notes extends Component {
         {/* <ul >
             {notesStore.posts.results.map((o) => <li>{notesStore.ucFirst(o.name)}</li>)}
         </ul> */}
+        {filteredNotes.length === 0 && <p>No Results</p>}
         <div className={styles.noteContainer}>
           {filteredNotes.map(obj => (
             <Note

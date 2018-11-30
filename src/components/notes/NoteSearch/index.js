@@ -8,7 +8,7 @@ export default class NoteSearch extends Component {
         <input
           className={styles.noteSearch}
           type="search"
-          placeholder="Search for title"
+          placeholder="Search using title/text"
           onChange={this.props.onSearch}/>
       </div>
     );
