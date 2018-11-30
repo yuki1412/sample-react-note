@@ -17,7 +17,7 @@ export default class Notes extends Component {
   };
   render() {
     // const { notes } = this.state;
-    const { notes, filteredNotes } = notesStore;
+    const { filteredNotes } = notesStore;
     const count = notesStore.notesCount;
     if (notesStore.isLoading)
       return (
@@ -31,7 +31,7 @@ export default class Notes extends Component {
         {/* <ul >
             {notesStore.posts.results.map((o) => <li>{notesStore.ucFirst(o.name)}</li>)}
         </ul> */}
-        {filteredNotes.length === 0 && <p>No Results</p>}
+        {filteredNotes.length === 0 && <p>No Result</p>}
         <div className={styles.noteContainer}>
           {filteredNotes.map(obj => (
             <Note
