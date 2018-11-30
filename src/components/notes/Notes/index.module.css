@@ -50,7 +50,7 @@
   width: 14px;
   border-radius: 45px;
   background-color: #ffffff;
-  transition: transform 400ms ease-in;
+  transition: transform 600ms ease-in-out;
   transform: translateX(0);
 }
 
@@ -59,7 +59,6 @@
   width: 14px;
   border-radius: 45px;
   background-color: #ffffff;
-  transition: transform 400ms ease-in;
-  transform: translateX(0);
+  transition: transform 600ms ease-in-out;
   transform: translateX(26px);
 }
