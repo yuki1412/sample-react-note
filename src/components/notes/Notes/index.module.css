@@ -6,9 +6,15 @@
   justify-content: space-between;
   background-color: #f7f7f7;
 }
+.noteContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-left: 25%;
+  margin-right: 25%;
+}
 
 .note {
-  background-color: white;
+  margin-left: 10px;
 }
 
 .footer {

@@ -41,6 +41,7 @@ export default class Notes extends Component {
               text={obj.text}
               createdAt={obj.createdAt}
               index={obj.index}
+              className={styles.note}
               // onDelete={this.handleOnDelete}
             />
           ))}

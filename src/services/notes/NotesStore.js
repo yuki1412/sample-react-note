@@ -17,12 +17,27 @@ class NotesStore {
   @observable
   notes = [
     {
-    title: 'For testing purpose',
+    title: 'Note 1',
     text: 'some text ...blablabla',
     index: 0,
   },
     {
     title: 'Second note',
+    text: 'some text ...blablabla',
+    index: 1,
+  },
+    {
+    title: '3rd note',
+    text: 'some text ...blablabla',
+    index: 1,
+  },
+    {
+    title: 'Forth note',
+    text: 'some text ...blablabla',
+    index: 1,
+  },
+    {
+    title: 'Forth note',
     text: 'some text ...blablabla',
     index: 1,
   },
